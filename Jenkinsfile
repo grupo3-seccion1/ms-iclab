@@ -98,7 +98,7 @@ pipeline {
                     jsonObj=jsonObj.replace("{branchname}", env.BRANCH_NAME)
                     jsonObj=jsonObj.replace("{main}", "main")                                      
                     echo "JSON: $jsonObj"
-                    statusCode=sh(script: "curl -o /dev/null -s -w \"%{http_code}\" -X POST -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer $GIT_AUTH_PSW\" https://api.github.com/repos/DevOps-Corfo-2022-Seccion1-DV/ms-iclab/pulls --data-raw '$jsonObj'", returnStdout: true)                         
+                    statusCode=sh(script: "curl -o /dev/null -s -w \"%{http_code}\" -X POST -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer $GIT_AUTH_PSW\" https://api.github.com/repos/grupo3-seccion1/ms-iclab/pulls --data-raw '$jsonObj'", returnStdout: true)                         
                     echo "Resultado Pull request :  $statusCode" 
                     if(statusCode == "201"){
                         try {

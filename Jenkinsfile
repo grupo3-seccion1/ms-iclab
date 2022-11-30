@@ -165,7 +165,8 @@ pipeline {
             steps {
                 script{
                     sh 'git fetch --tags'
-                    lasttag = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags')
+                    // lasttag = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags')
+                    lasttag = sh(returnStdout: true, script: 'git describe --tags `git rev-list --tags --max-count=1`')
                     lasttag = lasttag.trim()
                     lasttag = lasttag.substring(1)
                     echo "lasttag: "+lasttag
